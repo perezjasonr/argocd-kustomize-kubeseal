@@ -1,6 +1,7 @@
 ---
 namespace: default
-namePrefix: kustomize-
+# prefixes are messing up the sealedSecret
+# namePrefix: kustomize-
 resources:
 - deployment.yaml
 - svc.yaml

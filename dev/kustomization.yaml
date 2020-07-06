@@ -1,8 +1,9 @@
 bases:
 - ../base
-namePrefix: dev-
+# namePrefix: dev-
 commonLabels:
   app: devapp
+  environment: dev
 commonAnnotations:
   circumstances: "made by kustomize dev section"
 patchesStrategicMerge:

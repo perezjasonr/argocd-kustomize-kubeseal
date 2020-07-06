@@ -1,8 +1,9 @@
 bases:
 - ../base
-namePrefix: prod-
+# namePrefix: prod-
 commonLabels:
   app: prodapp
+  environment: prod
 commonAnnotations:
   circumstances: "made by kustomize prod section specific prod image too"
 images:
