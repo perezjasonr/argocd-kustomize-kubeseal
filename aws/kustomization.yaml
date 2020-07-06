@@ -1,0 +1,7 @@
+namespace: default
+secretGenerator:
+- name: kustom-secretcreds
+  commands:
+    password: "aws kms decrypt--ciphertext-blob fileb://ExampleEncryptedFile --output text --query Plaintext | base64 --decode"
+generatorOptions:
+  disableNameSuffixHash: true

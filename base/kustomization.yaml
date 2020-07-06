@@ -1,0 +1,38 @@
+---
+namespace: default
+namePrefix: kustomize-
+resources:
+- deployment.yaml
+- svc.yaml
+- sealed-secret.yaml
+patchesStrategicMerge:
+- 3_replicas.yaml
+- set_memory.yaml
+
+secretGenerator:
+- name: kustom-secretcreds
+  literals:
+  - username=admin
+  - password=secretpassword
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- name: kustom-fileconfigmap
+  files:
+    - configmapfile.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+
+vars:
+- name: MY_SERVICE_NAME
+  objref:
+    kind: Service
+    name: my-nginx
+    apiVersion: v1
+
+---
+# i think you need this if you are using kubectl -k
+
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
